@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/root/.m2 ./mvnw -B dependency:go-offline
 
 # 애플리케이션 빌드: 소스가 바뀌면 이 단계부터 다시 실행된다
 COPY src/ ./src/
-RUN ./mvnw -B -DskipTests -Dbuild.finalName=${APP_NAME} package
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -B -DskipTests -Dbuild.finalName=${APP_NAME} package
 
 
 # ==============================================================================
